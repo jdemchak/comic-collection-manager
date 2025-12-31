@@ -13,6 +13,9 @@ public class Comic {
     private String format;
     private Integer volume;
 
+    public Comic() {
+    }
+
     public Comic(String isbn, String title, String publisher, String format, Integer volume) {
         this.isbn = isbn;
         this.title = title;
