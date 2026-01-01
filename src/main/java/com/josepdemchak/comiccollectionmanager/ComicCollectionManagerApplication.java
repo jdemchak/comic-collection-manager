@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.josepdemchak.comiccollectionmanager.service.ComicService;
+
 @SpringBootApplication
 public class ComicCollectionManagerApplication {
 
@@ -12,6 +14,14 @@ public class ComicCollectionManagerApplication {
 		SpringApplication.run(ComicCollectionManagerApplication.class, args);
 	}
 
+	@Bean
+    CommandLineRunner testGetComics(ComicService comicService) {
+        return args -> {
+            System.out.println("Comics in database:");
+            comicService.getComics().forEach(System.out::println);
+        };
+    }
+	/* 
 	@Bean
 	CommandLineRunner commandLineRunner(ComicRepository comicRepository){
 		return args -> {
@@ -25,5 +35,6 @@ public class ComicCollectionManagerApplication {
 			comicRepository.save(hornsbyAndHalo);
 		};
 	}
+	*/
 
 }
