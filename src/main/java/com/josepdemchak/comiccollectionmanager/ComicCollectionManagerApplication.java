@@ -14,6 +14,46 @@ public class ComicCollectionManagerApplication {
 		SpringApplication.run(ComicCollectionManagerApplication.class, args);
 	}
 
+
+	@Bean
+    CommandLineRunner testUpdateComic(ComicService comicService) {
+        return args -> {
+			Comic rocketfell = new Comic(
+				"978-1-5343-3352-9",
+				"Rocketfellers",
+				"Image",
+				"TPB",
+				1
+			);
+			comicService.updateComic("978-1-5343-3352-9", rocketfell);
+            System.out.println("Comics in database:");
+            comicService.getComics().forEach(System.out::println);
+        };
+    }
+	/*
+	@Bean
+    CommandLineRunner testDeleteComic(ComicService comicService) {
+        return args -> {
+			comicService.deleteComic("978-1-5343-3352-9");
+            System.out.println("Comics in database:");
+            comicService.getComics().forEach(System.out::println);
+        };
+    }
+	@Bean
+    CommandLineRunner testAddComic(ComicService comicService) {
+        return args -> {
+			Comic rocketfellers = new Comic(
+				"978-1-5343-3352-9",
+				"RocketFellers",
+				"Image",
+				"TPB",
+				1
+			);
+			comicService.addComic(rocketfellers);
+            System.out.println("Comics in database:");
+            comicService.getComics().forEach(System.out::println);
+        };
+    }
 	@Bean
     CommandLineRunner testGetComics(ComicService comicService) {
         return args -> {
@@ -21,7 +61,6 @@ public class ComicCollectionManagerApplication {
             comicService.getComics().forEach(System.out::println);
         };
     }
-	/* 
 	@Bean
 	CommandLineRunner commandLineRunner(ComicRepository comicRepository){
 		return args -> {
