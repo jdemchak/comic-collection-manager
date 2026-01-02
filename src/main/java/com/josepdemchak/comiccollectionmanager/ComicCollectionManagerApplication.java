@@ -15,6 +15,7 @@ public class ComicCollectionManagerApplication {
 	}
 
 
+	/*
 	@Bean
     CommandLineRunner testUpdateComic(ComicService comicService) {
         return args -> {
@@ -30,7 +31,6 @@ public class ComicCollectionManagerApplication {
             comicService.getComics().forEach(System.out::println);
         };
     }
-	/*
 	@Bean
     CommandLineRunner testDeleteComic(ComicService comicService) {
         return args -> {
