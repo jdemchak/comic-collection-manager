@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.josepdemchak.comiccollectionmanager.entity.Comic;
 import com.josepdemchak.comiccollectionmanager.exception.ComicNotFoundException;
+import com.josepdemchak.comiccollectionmanager.exception.DuplicateComicException;
 import com.josepdemchak.comiccollectionmanager.repository.ComicRepository;
 
 import jakarta.transaction.Transactional;
@@ -23,8 +24,12 @@ public class ComicService {
     }
 
     public Comic addComic(Comic comic){
-        comicRepository.save(comic);
-        return comic;
+        if(comicRepository.findById(comic.getIsbn()).isPresent()){
+            throw new DuplicateComicException("Comic already exists with ISBN: " + comic.getIsbn());
+        } else {
+            comicRepository.save(comic);
+            return comic;
+        }
     }
 
     public Comic getComic(String isbn){

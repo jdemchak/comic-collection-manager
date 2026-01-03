@@ -15,4 +15,11 @@ public class GlobalExceptionHandler {
                 .body(ex.getMessage());
     }
 
+    @ExceptionHandler(DuplicateComicException.class)
+    public ResponseEntity<String> handleDuplicateComic(DuplicateComicException ex){
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(ex.getMessage());
+    }
+
 }
