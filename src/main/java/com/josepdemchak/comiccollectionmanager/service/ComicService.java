@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.josepdemchak.comiccollectionmanager.Comic;
 import com.josepdemchak.comiccollectionmanager.ComicRepository;
+import com.josepdemchak.comiccollectionmanager.exception.ComicNotFoundException;
 
 import jakarta.transaction.Transactional;
 
@@ -27,7 +28,10 @@ public class ComicService {
     }
 
     public Comic getComic(String isbn){
-        return comicRepository.getReferenceById(isbn);
+        return comicRepository.findById(isbn)
+                .orElseThrow(() ->
+                    new ComicNotFoundException("Comic not found with ISBN: " + isbn)
+                );
     }
 
     public Comic deleteComic(String isbn){
