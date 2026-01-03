@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.josepdemchak.comiccollectionmanager.Comic;
-import com.josepdemchak.comiccollectionmanager.ComicRepository;
+import com.josepdemchak.comiccollectionmanager.entity.Comic;
 import com.josepdemchak.comiccollectionmanager.exception.ComicNotFoundException;
+import com.josepdemchak.comiccollectionmanager.repository.ComicRepository;
 
 import jakarta.transaction.Transactional;
 

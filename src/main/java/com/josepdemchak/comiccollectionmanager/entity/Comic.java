@@ -1,4 +1,4 @@
-package com.josepdemchak.comiccollectionmanager;
+package com.josepdemchak.comiccollectionmanager.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
