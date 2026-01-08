@@ -56,4 +56,12 @@ public class ComicService {
         return update;
     }
 
+    public List<Comic> getComicsByPublisher(String publisher){
+        return comicRepository.findByPublisher(publisher);
+    }
+
+    public long getCountByPublisher(String publisher){
+        return comicRepository.countByPublisher(publisher);
+    }
+
 }

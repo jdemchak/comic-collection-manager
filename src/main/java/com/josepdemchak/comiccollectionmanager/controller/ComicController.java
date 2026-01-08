@@ -52,4 +52,14 @@ public class ComicController {
         return comicService.updateComic(isbn, comic);
     }
 
+    @GetMapping("/publisher/{publisher}")
+    public List<Comic> getComicsByPublisher(@PathVariable String publisher){
+        return comicService.getComicsByPublisher(publisher);
+    }
+
+    @GetMapping("/publisher/{publisher}/count")
+    public long getCountByPublisher(@PathVariable String publisher){
+        return comicService.getCountByPublisher(publisher);
+    }
+
 }
