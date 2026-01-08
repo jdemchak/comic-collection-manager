@@ -2,15 +2,22 @@ package com.josepdemchak.comiccollectionmanager.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Comic {
 
     @Id
+    @NotBlank(message = "ISBN must not be blank")
     private String isbn;
+    @NotBlank(message = "Title must not be blank")
     private String title;
+    @NotBlank(message = "Publisher must not be blank")
     private String publisher;
+    @NotBlank(message = "Format must not be blank")
     private String format;
+    @PositiveOrZero(message = "Volume must be 0 or greater")
     private Integer volume;
 
     public Comic() {

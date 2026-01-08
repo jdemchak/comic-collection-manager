@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.josepdemchak.comiccollectionmanager.entity.Comic;
 import com.josepdemchak.comiccollectionmanager.service.ComicService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/comics")
 public class ComicController {
@@ -35,7 +37,7 @@ public class ComicController {
     }
 
     @PostMapping
-    public Comic addComic(@RequestBody Comic comic){
+    public Comic addComic(@Valid @RequestBody Comic comic){
         return comicService.addComic(comic);
     }
 
@@ -46,7 +48,7 @@ public class ComicController {
     }
 
     @PutMapping("/{isbn}")
-    public Comic updateComic(@PathVariable String isbn, @RequestBody Comic comic){
+    public Comic updateComic(@PathVariable String isbn, @Valid @RequestBody Comic comic){
         return comicService.updateComic(isbn, comic);
     }
 
