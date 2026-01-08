@@ -1,6 +1,8 @@
 package com.josepdemchak.comiccollectionmanager.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.josepdemchak.comiccollectionmanager.entity.Comic;
 import com.josepdemchak.comiccollectionmanager.exception.ComicNotFoundException;
 import com.josepdemchak.comiccollectionmanager.exception.DuplicateComicException;
 import com.josepdemchak.comiccollectionmanager.repository.ComicRepository;
+import com.josepdemchak.comiccollectionmanager.repository.ComicRepository.PublisherCount;
 
 import jakarta.transaction.Transactional;
 
@@ -62,6 +65,12 @@ public class ComicService {
 
     public long getCountByPublisher(String publisher){
         return comicRepository.countByPublisher(publisher);
+    }
+
+    public Map<String, Long> getCountForAllPublishers(){
+        return comicRepository.countComicsByPublisher()
+            .stream()
+            .collect(Collectors.toMap(PublisherCount::getPublisher, PublisherCount::getCount));
     }
 
 }

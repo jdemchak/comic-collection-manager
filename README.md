@@ -2,10 +2,16 @@
 Backend Spring Boot application for managing and tracking a personal comic book collection using REST APIs.
 
 # Features
-- Create, read, update, and delete comics
+- CRUD operations for comics (Create, Read, Update, Delete)
 - Persistent storage using MySQL and JPA
 - RESTful API design
-- Custom exception handling for error scenarios
+- Bean Validation for POST and PUT endpoints to ensure valid input
+- Custom exception handling for error scenarios (ComicNotFound, DuplicateComic, validation errors)
+- Custom queries:
+    - Find comics by publisher
+    - Count comics by a single publisher
+    - Count comics for all publishers
+- Tested with Postman
 
 # Technologies Used
 - Java
@@ -22,3 +28,6 @@ Backend Spring Boot application for managing and tracking a personal comic book 
 - POST /comics
 - PUT /comics/{isbn}
 - DELETE /comics/{isbn}
+- GET /comics/publisher/{publisher}
+- GET /comics/publisher/{publisher}/count
+- GET /comics/publisher/count

@@ -1,6 +1,7 @@
 package com.josepdemchak.comiccollectionmanager.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,6 +61,11 @@ public class ComicController {
     @GetMapping("/publisher/{publisher}/count")
     public long getCountByPublisher(@PathVariable String publisher){
         return comicService.getCountByPublisher(publisher);
+    }
+
+    @GetMapping("/publisher/count")
+    public Map<String, Long> getCountForAllPublishers(){
+        return comicService.getCountForAllPublishers();
     }
 
 }
