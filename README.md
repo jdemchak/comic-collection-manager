@@ -5,6 +5,7 @@ Backend Spring Boot application for managing and tracking a personal comic book 
 - CRUD operations for comics (Create, Read, Update, Delete)
 - Persistent storage using MySQL and JPA
 - RESTful API design
+- Pagination support for large datasets
 - Bean Validation for POST and PUT endpoints to ensure valid input
 - Custom exception handling for error scenarios (ComicNotFound, DuplicateComic, validation errors)
 - Custom queries:

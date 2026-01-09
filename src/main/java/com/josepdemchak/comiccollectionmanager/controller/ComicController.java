@@ -1,8 +1,10 @@
 package com.josepdemchak.comiccollectionmanager.controller;
 
-import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,9 +29,10 @@ public class ComicController {
         this.comicService = comicService;
     }
 
-    @GetMapping
-    public List<Comic> getComics(){
-        return comicService.getComics();
+    @GetMapping()
+    public ResponseEntity<Page<Comic>> getComics(Pageable pageable){
+        Page<Comic> comicPage = comicService.getComics(pageable);
+        return ResponseEntity.ok(comicPage);
     }
 
     @GetMapping("/{isbn}")
@@ -54,8 +57,9 @@ public class ComicController {
     }
 
     @GetMapping("/publisher/{publisher}")
-    public List<Comic> getComicsByPublisher(@PathVariable String publisher){
-        return comicService.getComicsByPublisher(publisher);
+    public ResponseEntity<Page<Comic>> getComicsByPublisher(@PathVariable String publisher, Pageable pageable){
+        Page<Comic> comicPage = comicService.getComicsByPublisher(publisher, pageable);
+        return ResponseEntity.ok(comicPage);
     }
 
     @GetMapping("/publisher/{publisher}/count")

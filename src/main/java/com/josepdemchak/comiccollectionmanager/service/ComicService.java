@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.josepdemchak.comiccollectionmanager.entity.Comic;
@@ -22,7 +24,7 @@ public class ComicService {
         this.comicRepository = comicRepository;
     }
 
-    public List<Comic> getComics(){
+    public List<Comic> getAllComics(){
         return comicRepository.findAll();
     }
 
@@ -59,8 +61,12 @@ public class ComicService {
         return update;
     }
 
-    public List<Comic> getComicsByPublisher(String publisher){
+    public List<Comic> getAllComicsByPublisher(String publisher){
         return comicRepository.findByPublisher(publisher);
+    }
+
+    public Page<Comic> getComicsByPublisher(String publisher, Pageable pageable){
+        return comicRepository.findByPublisher(publisher, pageable);
     }
 
     public long getCountByPublisher(String publisher){
@@ -71,6 +77,10 @@ public class ComicService {
         return comicRepository.countComicsByPublisher()
             .stream()
             .collect(Collectors.toMap(PublisherCount::getPublisher, PublisherCount::getCount));
+    }
+
+    public Page<Comic> getComics(Pageable pageable){
+        return comicRepository.findAll(pageable);
     }
 
 }
