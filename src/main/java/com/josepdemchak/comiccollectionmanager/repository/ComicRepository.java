@@ -23,4 +23,7 @@ public interface ComicRepository extends JpaRepository<Comic, String> {
     @Query("SELECT c.publisher AS publisher, COUNT(c) AS count FROM Comic c GROUP BY c.publisher")
     List<PublisherCount> countComicsByPublisher();
 
+    @Query("SELECT c FROM Comic c WHERE LOWER(c.title) LIKE LOWER(concat('%', :title, '%'))")
+    Page<Comic> findByTitleContainingIgnoreCase(String title, Pageable pageable);
+
 }

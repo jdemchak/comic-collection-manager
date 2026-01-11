@@ -83,4 +83,8 @@ public class ComicService {
         return comicRepository.findAll(pageable);
     }
 
+    public Page<Comic> getComicsByTitle(String title, Pageable pageable){
+        return comicRepository.findByTitleContainingIgnoreCase(title, pageable);
+    }
+
 }

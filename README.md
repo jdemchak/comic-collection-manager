@@ -12,6 +12,7 @@ Backend Spring Boot application for managing and tracking a personal comic book 
     - Find comics by publisher
     - Count comics by a single publisher
     - Count comics for all publishers
+    - Search comics by title using case-insensitive partial matching
 - Tested with Postman
 
 # Technologies Used
@@ -32,3 +33,4 @@ Backend Spring Boot application for managing and tracking a personal comic book 
 - GET /comics/publisher/{publisher}
 - GET /comics/publisher/{publisher}/count
 - GET /comics/publisher/count
+- GET /comics/search?title={title}

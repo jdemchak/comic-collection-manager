@@ -72,4 +72,10 @@ public class ComicController {
         return comicService.getCountForAllPublishers();
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<Page<Comic>> getComicsByTitle(String title, Pageable pageable){
+        Page<Comic> comicPage = comicService.getComicsByTitle(title, pageable);
+        return ResponseEntity.ok(comicPage);
+    }
+
 }
