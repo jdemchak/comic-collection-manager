@@ -20,7 +20,7 @@ import com.josepdemchak.comiccollectionmanager.service.ComicService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/comics")
+@RequestMapping("/api/comics")
 public class ComicController {
 
     private final ComicService comicService;

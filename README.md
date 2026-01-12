@@ -25,12 +25,12 @@ Backend Spring Boot application for managing and tracking a personal comic book 
 - Git & GitHub
 
 # API Endpoints
-- GET /comics
-- GET /comics/{isbn}
-- POST /comics
-- PUT /comics/{isbn}
-- DELETE /comics/{isbn}
-- GET /comics/publisher/{publisher}
-- GET /comics/publisher/{publisher}/count
-- GET /comics/publisher/count
-- GET /comics/search?title={title}
+- GET /api/comics
+- GET /api/comics/{isbn}
+- POST /api/comics
+- PUT /api/comics/{isbn}
+- DELETE /api/comics/{isbn}
+- GET /api/comics/publisher/{publisher}
+- GET /api/comics/publisher/{publisher}/count
+- GET /api/comics/publisher/count
+- GET /api/comics/search?title={title}
