@@ -6,24 +6,35 @@
     </head>
     <body>
         <h1>Comic Collection</h1>
-
-        <div>
-            <button onclick="getComics()">See Complete Collection</button>
-        </div>
-
         <div id="comic-list"></div>
 
-        <div id="pagination"></div>
+        <h2>Number of Books Per Publisher</h2>
+        <div id="publisher-list"></div>
 
         <h2>Add Comic To Collection</h2>
-
         <form id="comic-form">
-            <input type="text" id="isbn" placeholder="ISBN">
+            <input type="text" id="isbn" placeholder="ISBN" required>
             <input type="text" id="title" placeholder="Title">
             <input type="text" id="publisher" placeholder="Publisher">
             <input type="text" id="format" placeholder="Format">
             <input type="number" id="volume" placeholder="Volume">
-            <button type="submit">Submit</button>
+            <button type="submit">Add Comic</button>
+        </form>
+
+        <h2>Delete Comic From Collection</h2>
+        <form id="delete-comic-form">
+            <input type="text" id="delete-isbn" placeholder="ISBN" required>
+            <button type="submit">Delete Comic</button>
+        </form>
+
+        <h2>Update Comic in Collection</h2>
+        <form id="update-comic-form">
+            <input type="text" id="update-isbn" placeholder="ISBN" required>
+            <input type="text" id="update-title" placeholder="Title">
+            <input type="text" id="update-publisher" placeholder="Publisher">
+            <input type="text" id="update-format" placeholder="Format">
+            <input type="number" id="update-volume" placeholder="Volume">
+            <button type="submit">Update Comic</button>
         </form>
 
         <script src="script.js"></script>
