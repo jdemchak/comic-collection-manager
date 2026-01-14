@@ -15,3 +15,42 @@ function getComics(page = 0, size = 5){
         })
         .catch(error => console.error("Error:",error));
 }
+
+function addComic(){
+    document.getElementById("comic-form")
+        .addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const comic = {
+                isbn: document.getElementById("isbn").value,
+                title: document.getElementById("title").value,
+                publisher: document.getElementById("publisher").value,
+                format: document.getElementById("format").value,
+                volume: document.getElementById("volume").value,
+            };
+
+            fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(comic)
+            })
+            .then(response => {
+                if(!response.ok){
+                    throw new Error("Failure to add comic");
+                }
+                return response.json();
+            })
+            .then(() => {
+                getComics();
+                document.getElementById("comic-form").reset();
+            })
+            .catch(error => {
+                console.error("Error:", error)
+                alert(error.message);
+            });
+        });
+}
+
+addComic();
