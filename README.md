@@ -13,17 +13,11 @@ Backend Spring Boot application for managing and tracking a personal comic book 
     - Count comics by a single publisher
     - Count comics for all publishers
     - Search comics by title using case-insensitive partial matching
+- Frontend with HTML, JS, and CSS:
+    - Add, update, delete comics through the interface
+    - Pagination for comic collection
+    - Interactive comic list to view full details
 - Tested with Postman
-
-# Frontend
-- Simple HTML + JavaScript interface to interact with the backend
-- Features:
-    - View all comics
-    - Add new comics
-    - Update existing comics
-    - Delete comics
-    - Display number of comics per publisher
-- Uses `fetch` API to call the backend endpoints
 
 # Technologies Used
 - Java
@@ -31,7 +25,7 @@ Backend Spring Boot application for managing and tracking a personal comic book 
 - Spring Data JPA
 - MySQL
 - Maven
-- HTML, JavaScript
+- HTML, JavaScript, CSS
 - Postman
 - Git & GitHub
 

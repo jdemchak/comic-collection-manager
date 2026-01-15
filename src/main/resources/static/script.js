@@ -1,6 +1,8 @@
 const API_URL = "/api/comics";
 
-function getComics(page = 0, size = 20){
+let page = 0;
+const size = 5;
+function getComics(){
     fetch(`${API_URL}?page=${page}&size=${size}&sort=title,asc`)
         .then(response => response.json())
         .then(data => {
@@ -8,12 +10,49 @@ function getComics(page = 0, size = 20){
             comicList.innerHTML = "";
 
             data.content.forEach(comic => {
-                const comicDiv = document.createElement("div");
-                comicDiv.textContent = `${comic.title}`;
-                comicList.appendChild(comicDiv);
+            const comicDiv = document.createElement("div");
+
+            const title = document.createElement("h3");
+            title.textContent = comic.title;
+            title.classList.add("comic-title");
+
+            const details = document.createElement("div");
+            details.classList.add("comic-details");
+            details.style.display = "none";
+            details.innerHTML = `
+                <p><strong>ISBN:</strong> ${comic.isbn}</p>
+                <p><strong>Publisher:</strong> ${comic.publisher}</p>
+                <p><strong>Format:</strong> ${comic.format}</p>
+                <p><strong>Volume:</strong> ${comic.volume}</p>
+            `;
+
+            title.addEventListener("click", () => {
+                details.style.display =
+                    details.style.display === "none" ? "block" : "none";
             });
+
+            comicDiv.appendChild(title);
+            comicDiv.appendChild(details);
+            comicList.appendChild(comicDiv);
+        });
+
+            updatePaginationButtons(data);
         })
         .catch(error => console.error("Error:",error));
+}
+function nextPage() {
+    page++;
+    getComics();
+}
+function prevPage() {
+    if (page > 0) {
+        page--;
+        getComics();
+    }
+}
+function updatePaginationButtons(data) {
+    document.getElementById("prev-btn").disabled = page === 0;
+    document.getElementById("next-btn").disabled = data.last;
 }
 
 function addComic(){

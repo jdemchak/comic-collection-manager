@@ -3,40 +3,47 @@
     <head>
         <meta charset="UTF-8">
         <title>Comic Collection Manager</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Comic Collection</h1>
-        <div id="comic-list"></div>
+        <div class="container">
+            <h1>Comic Collection</h1>
+            <div id="comic-list"></div>
+            <div id="list-pagination">
+                <button onclick="prevPage()" id="prev-btn">Previous</button>
+                <button onclick="nextPage()" id="next-btn">Next</button>
+            </div>
 
-        <h2>Number of Books Per Publisher</h2>
-        <div id="publisher-list"></div>
+            <h2>Number of Books Per Publisher</h2>
+            <div id="publisher-list"></div>
 
-        <h2>Add Comic To Collection</h2>
-        <form id="comic-form">
-            <input type="text" id="isbn" placeholder="ISBN" required>
-            <input type="text" id="title" placeholder="Title">
-            <input type="text" id="publisher" placeholder="Publisher">
-            <input type="text" id="format" placeholder="Format">
-            <input type="number" id="volume" placeholder="Volume">
-            <button type="submit">Add Comic</button>
-        </form>
+            <h2>Add Comic To Collection</h2>
+            <form id="comic-form">
+                <input type="text" id="isbn" placeholder="ISBN" required>
+                <input type="text" id="title" placeholder="Title">
+                <input type="text" id="publisher" placeholder="Publisher">
+                <input type="text" id="format" placeholder="Format">
+                <input type="number" id="volume" placeholder="Volume">
+                <button type="submit">Add Comic</button>
+            </form>
 
-        <h2>Delete Comic From Collection</h2>
-        <form id="delete-comic-form">
-            <input type="text" id="delete-isbn" placeholder="ISBN" required>
-            <button type="submit">Delete Comic</button>
-        </form>
+            <h2>Delete Comic From Collection</h2>
+            <form id="delete-comic-form">
+                <input type="text" id="delete-isbn" placeholder="ISBN" required>
+                <button type="submit">Delete Comic</button>
+            </form>
 
-        <h2>Update Comic in Collection</h2>
-        <form id="update-comic-form">
-            <input type="text" id="update-isbn" placeholder="ISBN" required>
-            <input type="text" id="update-title" placeholder="Title">
-            <input type="text" id="update-publisher" placeholder="Publisher">
-            <input type="text" id="update-format" placeholder="Format">
-            <input type="number" id="update-volume" placeholder="Volume">
-            <button type="submit">Update Comic</button>
-        </form>
+            <h2>Update Comic in Collection</h2>
+            <form id="update-comic-form">
+                <input type="text" id="update-isbn" placeholder="ISBN" required>
+                <input type="text" id="update-title" placeholder="Title">
+                <input type="text" id="update-publisher" placeholder="Publisher">
+                <input type="text" id="update-format" placeholder="Format">
+                <input type="number" id="update-volume" placeholder="Volume">
+                <button type="submit">Update Comic</button>
+            </form>
 
-        <script src="script.js"></script>
+            <script src="script.js"></script>
+        </div>
     </body>
 </html>

@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: hsl(286, 23%, 52%);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#comic-list div {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#comic-list div:last-child {
+    border-bottom: none;
+}
+
+button {
+    padding: 8px 14px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+.comic-title {
+    cursor: pointer;
+    color: #333;
+}
+
+.comic-title:hover {
+    text-decoration: underline;
+}
+
+.comic-details {
+    margin-left: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
