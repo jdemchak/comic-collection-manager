@@ -2,8 +2,15 @@ const API_URL = "/api/comics";
 
 let page = 0;
 const size = 5;
+let currentSearch = "";
 function getComics(){
-    fetch(`${API_URL}?page=${page}&size=${size}&sort=title,asc`)
+    let url = `${API_URL}?page=${page}&size=${size}&sort=title,asc`;
+
+    if (currentSearch) {
+        url = `${API_URL}/search?title=${encodeURIComponent(currentSearch)}&page=${page}&size=${size}`;
+    }
+
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             const comicList = document.getElementById("comic-list");
@@ -53,6 +60,13 @@ function prevPage() {
 function updatePaginationButtons(data) {
     document.getElementById("prev-btn").disabled = page === 0;
     document.getElementById("next-btn").disabled = data.last;
+}
+function searchComics() {
+    const input = document.getElementById("search-title").value.trim();
+
+    currentSearch = input;
+    page = 0;
+    getComics();
 }
 
 function addComic(){
@@ -119,6 +133,9 @@ function deleteComic() {
             }
             alert("Comic deleted successfully");
             form.reset();
+            if (page > 0 && document.getElementById("comic-list").children.length === 1) {
+                page--;
+            }
             getComics();
             comicCountByPublisher();
         })

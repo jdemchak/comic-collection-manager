@@ -16,7 +16,7 @@ Backend Spring Boot application for managing and tracking a personal comic book 
 - Frontend with HTML, JS, and CSS:
     - Add, update, delete comics through the interface
     - Pagination for comic collection
-    - Interactive comic list to view full details
+    - Interactive comic list to search and view full details
 - Tested with Postman
 
 # Technologies Used
